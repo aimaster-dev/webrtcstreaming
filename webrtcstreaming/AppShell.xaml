@@ -5,11 +5,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:webrtcstreaming"
     Shell.FlyoutBehavior="Disabled"
-    Title="webrtcstreaming">
+    BackgroundColor="#0F1535"
+    Title="webrtcstreaming"
+    HeightRequest="10"
+    Shell.TabBarBackgroundColor="#0F1535">
 
     <ShellContent
-        Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    <ShellContent 
+        ContentTemplate="{DataTemplate local:Signup}" 
+        Route="signup" />
 
 </Shell>
