@@ -17,6 +17,7 @@ namespace webrtcstreaming
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
             {
                 Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#0F1535"));
+                Window.SetNavigationBarColor(Android.Graphics.Color.ParseColor("#0F1535"));
             }
 
             Microsoft.Maui.Handlers.PickerHandler.Mapper.AppendToMapping("NoUnderline", (handler, view) =>
