@@ -1,25 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="webrtcstreaming.MainPage">
-
-    <Shell.TitleView>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center" Padding="10">
-            <ImageButton
-                Source="back.svg"
-                BackgroundColor="Transparent"
-                Clicked="OnBackClicked"
-                HeightRequest="24"
-                WidthRequest="24"
-                HorizontalOptions="Start"/>
-        </Grid>
-    </Shell.TitleView>
-    
+             x:Class="webrtcstreaming.MainPage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False">
     <Grid BackgroundColor="#0F1535" Padding="20, 0">
         <ScrollView Grid.Row="0">
             <VerticalStackLayout
                 Padding="0,0"
                 Spacing="5">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center" Padding="10">
+                    <ImageButton
+                    Source="back.svg"
+                    BackgroundColor="Transparent"
+                    Clicked="OnBackClicked"
+                    HeightRequest="24"
+                    WidthRequest="24"
+                    HorizontalOptions="Start"/>
+                </Grid>
                 <Image
                     Source="logo.png"
                     BackgroundColor="#0F1535"
@@ -44,7 +42,7 @@
                 <Frame
                     Padding="1"
                     CornerRadius="16"
-                    BorderColor="White"
+                    BorderColor="#B398B9FE"
                     BackgroundColor="Transparent"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Center"
@@ -78,9 +76,10 @@
                     </HorizontalStackLayout>
                 </Frame>
                 <Frame
+                    x:Name="EmailField"
                     Padding="1"
                     CornerRadius="16"
-                    BorderColor="White"
+                    BorderColor="#B398B9FE"
                     BackgroundColor="Transparent"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Center"
@@ -99,16 +98,23 @@
                         <Entry  
                             x:Name="EmailAddress"
                             TextColor="White"
-                            Placeholder="Email"
+                            Placeholder="Email*"
                             PlaceholderColor="#9E9E9E"
                             Keyboard="Email"
                             WidthRequest="5000"/>
                     </HorizontalStackLayout>
                 </Frame>
+                <Label
+                x:Name="EmailRequiredLabel"
+                Text="Required*"
+                TextColor="Red"
+                FontSize="Small"
+                IsVisible="False" />
                 <Frame
+                    x:Name="PasswordField"
                     Padding="1"
                     CornerRadius="16"
-                    BorderColor="White"
+                    BorderColor="#B398B9FE"
                     BackgroundColor="Transparent"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Center"
@@ -128,12 +134,18 @@
                             IsPassword="true"
                             x:Name="Password"
                             TextColor="White"
-                            Placeholder="Password"
+                            Placeholder="Password*"
                             PlaceholderColor="#9E9E9E"
                             Keyboard="Default"
                             WidthRequest="5000"/>
                     </HorizontalStackLayout>
                 </Frame>
+                <Label
+                x:Name="PasswordRequiredLabel"
+                Text="Required*"
+                TextColor="Red"
+                FontSize="Small"
+                IsVisible="False" />
             </VerticalStackLayout>
         </ScrollView>
         <Button
