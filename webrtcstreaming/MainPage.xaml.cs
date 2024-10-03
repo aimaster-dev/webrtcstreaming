@@ -114,28 +114,15 @@ namespace webrtcstreaming
             string email = EmailAddress.Text;
             string password = Password.Text;
 
-            if (string.IsNullOrWhiteSpace(email))
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
-                EmailField.BorderColor = Color.FromRgb(255, 0, 0);
-                EmailRequiredLabel.IsVisible = true;
-                return;
-            }
-            else if (string.IsNullOrWhiteSpace(password))
-            {
-                EmailField.BorderColor = Color.FromRgba(152, 185, 254, 0.7);
-                PasswordField.BorderColor = Color.FromRgb(255, 0, 0);
-                EmailRequiredLabel.IsVisible = false;
-                PasswordRequiredLabel.IsVisible = true;
+                await DisplayAlert("Error", "Please enter both email and password.", "OK");
                 return;
             }
 
             if(!IsValidEmail(email))
             {
-                PasswordField.BorderColor = Color.FromRgba(152, 185, 254, 0.7);
-                EmailField.BorderColor = Color.FromRgb(255, 0, 0);
-                EmailRequiredLabel.Text = "Please input your email correctly*";
-                PasswordRequiredLabel.IsVisible = false;
-                EmailRequiredLabel.IsVisible = true;
+                await DisplayAlert("Error", "Please enter a valid email address.", "OK");
                 return;
             }
 
@@ -186,12 +173,12 @@ namespace webrtcstreaming
 
         private async void OnSignupTapped(object sender, TappedEventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new Signup()));
+            await Shell.Current.GoToAsync("///signup");
         }
 
         private async void OnBackClicked(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            await Shell.Current.GoToAsync("..");
         }
     }
 
