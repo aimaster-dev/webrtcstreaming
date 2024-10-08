@@ -36,10 +36,21 @@ namespace webrtcstreaming
 
     }
 
+    public class InvalidMsg
+    {
+        public string msg { get; set; }
+    }
+
     public class SigninAPIResponse
     {
         public bool status { get; set; }
         public Credential data { get; set; }
+    }
+
+    public class SigninFailedResponse
+    {
+        public bool status { get; set; }
+        public InvalidMsg data { get; set; }
     }
 
     public partial class MainPage : ContentPage
@@ -170,11 +181,18 @@ namespace webrtcstreaming
                         await SecureStorage.SetAsync("AccessToken", responseData.data.access);
                         await SecureStorage.SetAsync("RefreshToken", responseData.data.refresh);
 
-                        await DisplayAlert("Login Successful", $"Refresh Token: {responseData.data.refresh}\nAccess Token: {responseData.data.access}", "OK");
+                        //await DisplayAlert("Login Successful", $"Refresh Token: {responseData.data.refresh}\nAccess Token: {responseData.data.access}", "OK");
+                        await Navigation.PushModalAsync(new NavigationPage(new CameraChoose()));
                     }
                     else
                     {
-                        await DisplayAlert("Error", "Login failed. Please check your credentials.", "OK");
+                        var responseString = await response.Content.ReadAsStringAsync();
+                        var responseData = JsonConvert.DeserializeObject<SigninFailedResponse>(responseString);
+                        await DisplayAlert("Error", $"Login failed. {responseData.data.msg}", "OK");
+                        if (response.StatusCode == System.Net.HttpStatusCode.NotAcceptable) 
+                        {
+                            await Navigation.PushModalAsync(new NavigationPage(new OTPpage()));
+                        }
                     }
                 }
             }

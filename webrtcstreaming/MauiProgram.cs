@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+using webrtcstreaming.Controls;
+using Microsoft.Extensions.Logging;
 
 namespace webrtcstreaming
 {
@@ -9,6 +10,12 @@ namespace webrtcstreaming
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .ConfigureMauiHandlers(handlers =>
+                {
+#if ANDROID
+                    handlers.AddHandler<CameraView, webrtcstreaming.Handlers.CameraViewHandler>();
+#endif
+                })
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -16,7 +23,7 @@ namespace webrtcstreaming
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

@@ -16,5 +16,8 @@
     <ShellContent 
         ContentTemplate="{DataTemplate local:Signup}" 
         Route="signup" />
+    <ShellContent 
+        ContentTemplate="{DataTemplate local:OTPpage}" 
+        Route="otppage" />
 
 </Shell>

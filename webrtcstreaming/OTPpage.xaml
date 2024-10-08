@@ -2,11 +2,80 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="webrtcstreaming.OTPpage"
-             Title="OTPpage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             NavigationPage.HasNavigationBar="False">
+    <Grid Padding="20" BackgroundColor="#0F1535">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <HorizontalStackLayout Grid.Row="0">
+            <ImageButton Source="back.svg" HorizontalOptions="Start"
+                BackgroundColor="Transparent" HeightRequest="24" WidthRequest="24" Clicked="OnBackClicked" />
+            <Label Text="Verify" Grid.Row="0" FontSize="Large" TextColor="#FFFFFFFF" HorizontalOptions="Start"
+                VerticalOptions="Center" Padding="10, 10, 0, 10" />
+        </HorizontalStackLayout>
+        <Label Text="Verify Code" Grid.Row="1" FontSize="Large" TextColor="#FFFFFFFF" HorizontalOptions="Center"
+               VerticalOptions="Center" Padding="0, 20, 0, 10" />
+        <Label Text="Verification code sent to your contact number" Grid.Row="2" TextColor="#46FFFFFF" FontSize="Small"
+               HorizontalOptions="Center" VerticalOptions="Center" />
+        <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" Padding="0,20,0,20">
+            <Border Stroke="#ABAAF4" StrokeThickness="2" BackgroundColor="Transparent">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="11.14" />
+                </Border.StrokeShape>
+                <Entry x:Name="otp1" MaxLength="1" WidthRequest="40" FontSize="Large" TextColor="White"
+                    Keyboard="Numeric" TextChanged="OtpTextChanged" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            </Border>
+            <Border Stroke="#ABAAF4" StrokeThickness="2" BackgroundColor="Transparent">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="11.14" />
+                </Border.StrokeShape>
+                <Entry x:Name="otp2" MaxLength="1" WidthRequest="40" FontSize="Large" TextColor="White"
+                        Keyboard="Numeric" TextChanged="OtpTextChanged" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            </Border>
+            <Border Stroke="#ABAAF4" StrokeThickness="2" BackgroundColor="Transparent">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="11.14" />
+                </Border.StrokeShape>
+                <Entry x:Name="otp3" MaxLength="1" WidthRequest="40" FontSize="Large" TextColor="White"
+                        Keyboard="Numeric" TextChanged="OtpTextChanged" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            </Border>
+            <Border Stroke="#ABAAF4" StrokeThickness="2" BackgroundColor="Transparent">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="11.14" />
+                </Border.StrokeShape>
+                <Entry x:Name="otp4" MaxLength="1" WidthRequest="40" FontSize="Large" TextColor="White"
+                        Keyboard="Numeric" TextChanged="OtpTextChanged" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            </Border>
+            <Border Stroke="#ABAAF4" StrokeThickness="2" BackgroundColor="Transparent">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="11.14" />
+                </Border.StrokeShape>
+                <Entry x:Name="otp5" MaxLength="1" WidthRequest="40" FontSize="Large" TextColor="White"
+                    Keyboard="Numeric" TextChanged="OtpTextChanged" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            </Border>
+            <Border Stroke="#ABAAF4" StrokeThickness="2" BackgroundColor="Transparent">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="11.14" />
+                </Border.StrokeShape>
+                <Entry x:Name="otp6" MaxLength="1" WidthRequest="40" FontSize="Large" TextColor="White"
+                    Keyboard="Numeric" TextChanged="OtpTextChanged" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            </Border>
+        </StackLayout>
+        <Label Grid.Row="4" HorizontalOptions="Center" TextColor="White">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span x:Name="FooterMsg" Text="Didn't receive OTP?" TextColor="Gray" />
+                    <Span x:Name="ResendTap" Text=" Resend code" TextColor="Blue" FontAttributes="Bold">
+                        <Span.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnResendTapped" />
+                        </Span.GestureRecognizers>
+                    </Span>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </Grid>
 </ContentPage>

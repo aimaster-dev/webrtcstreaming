@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="webrtcstreaming.CameraChoose"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False">
+    <Grid Padding="20" BackgroundColor="#0F1535">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <HorizontalStackLayout Grid.Row="0">
+            <ImageButton Source="back.svg" HorizontalOptions="Start"
+            BackgroundColor="Transparent" HeightRequest="24" WidthRequest="24" Clicked="OnBackClicked" />
+            <Label Text="Choose Camera" Grid.Row="0" FontSize="Large" TextColor="#FFFFFFFF" HorizontalOptions="Start"
+            VerticalOptions="Center" Padding="10, 10, 0, 10" />
+        </HorizontalStackLayout>
+        <CollectionView Grid.Row="1" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Cameras}" SelectionMode="Single" SelectionChanged="OnSelectionChanged">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                             Span="2"
+                             HorizontalItemSpacing="10"
+                             VerticalItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="0" CornerRadius="15" HasShadow="True" BackgroundColor="#1A575B72" BorderColor="Transparent" InputTransparent="True">
+                        <StackLayout BackgroundColor="#1A575B72" Padding="10">
+                            <Image Source="camera.svg" HeightRequest="60" WidthRequest="60" Aspect="AspectFill" />
+                            <Label Text="{Binding camera_name}" FontSize="14" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" Padding="10" />
+                            <Label Text="{Binding camera_ip}" FontSize="14" TextColor="Gray" IsVisible="False" />
+                            <Label Text="{Binding camera_port}" FontSize="12" TextColor="Gray" IsVisible="False" />
+                            <Label Text="{Binding camera_user_name}" FontSize="12" TextColor="Gray" IsVisible="False" />
+                            <Label Text="{Binding password}" FontSize="12" TextColor="Gray" IsVisible="False" />
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

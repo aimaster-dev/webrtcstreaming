@@ -149,7 +149,7 @@ public partial class Signup : ContentPage
                     if (responseData.status == true) 
                     {
                         await DisplayAlert("Success", $"{responseData.data}", "OK");
-                        await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
+                        await Navigation.PushModalAsync(new NavigationPage(new OTPpage()));
                     }
                     else
                     {

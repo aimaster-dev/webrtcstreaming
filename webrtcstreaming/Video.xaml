@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Ctrls="clr-namespace:webrtcstreaming.Controls"
+             x:Class="webrtcstreaming.Video"
+             NavigationPage.HasNavigationBar="False">
+    <VerticalStackLayout>
+        <Ctrls:CameraView x:Name="cameraView" Url="{Binding Url}" User="{Binding User}" Password="{Binding Password}"
+                          HorizontalOptions="FillAndExpand">
+        </Ctrls:CameraView>
+    </VerticalStackLayout>
+</ContentPage>
